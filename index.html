@@ -221,8 +221,11 @@
       </section>
 
       <section class="tile blog">
-        <h2 class="label">Writing &amp; talks</h2>
-        <ul class="post-grid">
+        <h2 class="label" id="writing-label">Writing &amp; talks</h2>
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" type="button" data-dir="-1" aria-label="Previous" hidden>←</button>
+          <button class="carousel-btn next" type="button" data-dir="1" aria-label="Next" hidden>→</button>
+        <ul class="post-grid carousel" aria-labelledby="writing-label" tabindex="0">
           <li>
             <a class="post talk" href="https://www.youtube.com/watch?v=3luipQCNKXw&amp;list=PLbgP71NCXCqHAfztq9uRBd26KJ5V5N8v6&amp;index=8">
               <span class="post-meta"><span aria-hidden="true">🎤</span> Talk · DevOpsDays India 2022</span>
@@ -272,6 +275,8 @@
             </a>
           </li>
         </ul>
+        </div>
+        <div class="carousel-dots" role="group" aria-label="Choose slide"></div>
       </section>
 
       <section class="tile tools">
@@ -405,6 +410,56 @@
       select(DEFAULT_CLIENT);
       clientList.after(tabs);
       clientList.closest(".places").classList.add("has-tabs");
+
+      // Writing & talks carousel: side arrows move one card at a time,
+      // dots show (and jump to) each position. Without JavaScript the row
+      // is still swipeable.
+      const track = document.querySelector(".carousel");
+      const wrap = track.closest(".carousel-wrap");
+      const prevBtn = wrap.querySelector(".prev");
+      const nextBtn = wrap.querySelector(".next");
+      const dotsBox = document.querySelector(".carousel-dots");
+      const cards = [...track.children];
+      const step = () => {
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        return cards[0].getBoundingClientRect().width + gap;
+      };
+      const positions = () =>
+        Math.max(1, Math.round((track.scrollWidth - track.clientWidth) / step()) + 1);
+      const current = () => Math.round(track.scrollLeft / step());
+      const goTo = (i) => track.scrollTo({ left: i * step(), behavior: "smooth" });
+
+      const buildDots = () => {
+        const count = positions();
+        if (dotsBox.children.length === count) return;
+        dotsBox.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "carousel-dot";
+          dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${count}`);
+          dot.addEventListener("click", () => goTo(i));
+          dotsBox.appendChild(dot);
+        }
+      };
+      const update = () => {
+        buildDots();
+        const count = positions();
+        const active = Math.min(current(), count - 1);
+        [...dotsBox.children].forEach((dot, i) =>
+          dot.setAttribute("aria-current", String(i === active))
+        );
+        const scrollable = count > 1;
+        prevBtn.hidden = nextBtn.hidden = dotsBox.hidden = !scrollable;
+        prevBtn.disabled = active <= 0;
+        nextBtn.disabled = active >= count - 1;
+      };
+      [prevBtn, nextBtn].forEach((btn) =>
+        btn.addEventListener("click", () => goTo(current() + Number(btn.dataset.dir)))
+      );
+      track.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
 
       // Side projects: show the first row, reveal the rest on demand.
       // Without JavaScript every card simply stays visible.
