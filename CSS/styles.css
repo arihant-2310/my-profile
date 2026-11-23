@@ -259,6 +259,11 @@ ul {
   gap: 10px;
 }
 
+/* Small avatar inside the intro, only used on phones */
+.intro-avatar {
+  display: none;
+}
+
 /* Avatar & now */
 
 .avatar {
@@ -1100,6 +1105,32 @@ footer p {
   }
   .tool-groups {
     grid-template-columns: 1fr;
+  }
+  /* Merge the avatar into the intro so the first two tiles
+     don't look like twins; the avatar tile becomes a compact hobbies strip. */
+  .intro-avatar {
+    display: block;
+    width: 76px;
+    height: 76px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--tile);
+    box-shadow: 0 6px 16px -8px rgba(17, 153, 158, 0.5);
+  }
+  .avatar {
+    align-items: flex-start;
+    text-align: left;
+    gap: 6px;
+    padding: 18px 20px;
+  }
+  .avatar img {
+    display: none;
+  }
+  .caption {
+    max-width: none;
+  }
+  .caption strong {
+    display: inline;
   }
   .project-grid {
     grid-template-columns: 1fr;
