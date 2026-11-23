@@ -10,6 +10,13 @@
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <meta name="theme-color" content="#11999e">
+    <script>
+      // Apply a saved theme choice before the page paints (no flash).
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
 
     <!-- Link previews (LinkedIn, Slack, WhatsApp, X) -->
     <meta property="og:type" content="website">
@@ -29,6 +36,10 @@
     <main class="bento">
 
       <section class="tile intro">
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+        </button>
         <img class="intro-avatar" src="images/avatar.webp" alt="" width="76" height="76">
         <p class="hi">Hi there <span class="wave" aria-hidden="true">👋</span> I'm</p>
         <h1>Arihant</h1>
@@ -276,11 +287,11 @@
           </li>
         </ul>
         </div>
-        <div class="carousel-dots" role="group" aria-label="Choose slide"></div>
+        <div class="carousel-dots" role="group" aria-label="Choose slide" hidden></div>
       </section>
 
       <section class="tile tools">
-        <h2 class="label">Toolbox</h2>
+        <h2 class="label">Toolbox <span class="swipe-hint">· swipe →</span></h2>
         <div class="tool-groups">
           <div class="tool-group">
             <h3><span aria-hidden="true">🗣️</span> Languages</h3>
@@ -315,6 +326,7 @@
             <ul><li>OpenTelemetry</li><li>Grafana</li><li>Prometheus</li><li>Datadog</li><li>SigNoz</li><li>CloudWatch</li></ul>
           </div>
         </div>
+        <div class="carousel-dots" role="group" aria-label="Choose toolbox page" hidden></div>
       </section>
 
       <section class="tile contact">
@@ -342,6 +354,26 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Light/dark toggle: follows the system until the visitor picks one,
+      // then remembers the choice.
+      const root = document.documentElement;
+      const themeBtn = document.querySelector(".theme-toggle");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const currentTheme = () => root.dataset.theme || (systemDark.matches ? "dark" : "light");
+      const syncThemeLabel = () => {
+        const next = currentTheme() === "dark" ? "light" : "dark";
+        themeBtn.setAttribute("aria-label", `Switch to ${next} theme`);
+        themeBtn.title = `Switch to ${next} theme`;
+      };
+      themeBtn.addEventListener("click", () => {
+        const next = currentTheme() === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        syncThemeLabel();
+      });
+      systemDark.addEventListener("change", syncThemeLabel);
+      syncThemeLabel();
 
       // Teams I've helped: on wide screens, turn the accordion into a
       // list-and-details view built from the same markup.
@@ -411,55 +443,69 @@
       clientList.after(tabs);
       clientList.closest(".places").classList.add("has-tabs");
 
-      // Writing & talks carousel: side arrows move one card at a time,
-      // dots show (and jump to) each position. Without JavaScript the row
-      // is still swipeable.
-      const track = document.querySelector(".carousel");
-      const wrap = track.closest(".carousel-wrap");
-      const prevBtn = wrap.querySelector(".prev");
-      const nextBtn = wrap.querySelector(".next");
-      const dotsBox = document.querySelector(".carousel-dots");
-      const cards = [...track.children];
-      const step = () => {
-        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-        return cards[0].getBoundingClientRect().width + gap;
-      };
-      const positions = () =>
-        Math.max(1, Math.round((track.scrollWidth - track.clientWidth) / step()) + 1);
-      const current = () => Math.round(track.scrollLeft / step());
-      const goTo = (i) => track.scrollTo({ left: i * step(), behavior: "smooth" });
+      // Carousels: swipeable rows with position dots (and optional arrows).
+      // Without JavaScript the rows are still swipeable.
+      const setupCarousel = ({ track, dotsBox, prevBtn, nextBtn, step }) => {
+        const positions = () =>
+          Math.max(1, Math.round((track.scrollWidth - track.clientWidth) / step()) + 1);
+        const current = () => Math.round(track.scrollLeft / step());
+        const goTo = (i) => track.scrollTo({ left: i * step(), behavior: "smooth" });
 
-      const buildDots = () => {
-        const count = positions();
-        if (dotsBox.children.length === count) return;
-        dotsBox.innerHTML = "";
-        for (let i = 0; i < count; i++) {
-          const dot = document.createElement("button");
-          dot.type = "button";
-          dot.className = "carousel-dot";
-          dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${count}`);
-          dot.addEventListener("click", () => goTo(i));
-          dotsBox.appendChild(dot);
-        }
-      };
-      const update = () => {
-        buildDots();
-        const count = positions();
-        const active = Math.min(current(), count - 1);
-        [...dotsBox.children].forEach((dot, i) =>
-          dot.setAttribute("aria-current", String(i === active))
+        const buildDots = (count) => {
+          if (dotsBox.children.length === count) return;
+          dotsBox.innerHTML = "";
+          for (let i = 0; i < count; i++) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "carousel-dot";
+            dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${count}`);
+            dot.addEventListener("click", () => goTo(i));
+            dotsBox.appendChild(dot);
+          }
+        };
+        const update = () => {
+          const count = positions();
+          buildDots(count);
+          const active = Math.min(current(), count - 1);
+          [...dotsBox.children].forEach((dot, i) =>
+            dot.setAttribute("aria-current", String(i === active))
+          );
+          dotsBox.hidden = count < 2;
+          if (prevBtn && nextBtn) {
+            prevBtn.hidden = nextBtn.hidden = count < 2;
+            prevBtn.disabled = active <= 0;
+            nextBtn.disabled = active >= count - 1;
+          }
+        };
+        [prevBtn, nextBtn].filter(Boolean).forEach((btn) =>
+          btn.addEventListener("click", () => goTo(current() + Number(btn.dataset.dir)))
         );
-        const scrollable = count > 1;
-        prevBtn.hidden = nextBtn.hidden = dotsBox.hidden = !scrollable;
-        prevBtn.disabled = active <= 0;
-        nextBtn.disabled = active >= count - 1;
+        track.addEventListener("scroll", update, { passive: true });
+        // Recalculate whenever the row's size changes (rotation, font load, resize).
+        new ResizeObserver(update).observe(track);
+        update();
       };
-      [prevBtn, nextBtn].forEach((btn) =>
-        btn.addEventListener("click", () => goTo(current() + Number(btn.dataset.dir)))
-      );
-      track.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
-      update();
+      const gapOf = (el) => parseFloat(getComputedStyle(el).columnGap) || 0;
+
+      // Writing & talks: moves one card at a time.
+      const postTrack = document.querySelector(".carousel");
+      const postWrap = postTrack.closest(".carousel-wrap");
+      setupCarousel({
+        track: postTrack,
+        dotsBox: document.querySelector(".blog .carousel-dots"),
+        prevBtn: postWrap.querySelector(".prev"),
+        nextBtn: postWrap.querySelector(".next"),
+        step: () => postTrack.children[0].getBoundingClientRect().width + gapOf(postTrack),
+      });
+
+      // Toolbox: on phones it scrolls a full screen (two columns) at a time;
+      // on wider screens nothing overflows, so the dots stay hidden.
+      const toolTrack = document.querySelector(".tool-groups");
+      setupCarousel({
+        track: toolTrack,
+        dotsBox: document.querySelector(".tools .carousel-dots"),
+        step: () => toolTrack.clientWidth + gapOf(toolTrack),
+      });
 
       // Side projects: show the first row, reveal the rest on demand.
       // Without JavaScript every card simply stays visible.

@@ -14,10 +14,28 @@
   --sun: #ffe9a8;
   --radius: 22px;
   --marker: rgba(255, 205, 60, 0.75);
+  color-scheme: light;
+}
+
+/* Dark theme: used when the visitor picks it with the toggle, or when
+   their system prefers dark and they haven't picked light. */
+:root[data-theme="dark"] {
+  --bg: #0e1918;
+  --tile: #152523;
+  --text: #e3f3f0;
+  --muted: #93b2ad;
+  --border: #21403c;
+  --mint: #1b3532;
+  --teal: #66bfbf;
+  --teal-dark: #0f7f83;
+  --accent: #6fd6d2;
+  --marker: rgba(255, 205, 60, 0.4);
+  --sun: #1f3d39;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0e1918;
     --tile: #152523;
     --text: #e3f3f0;
@@ -29,6 +47,7 @@
     --accent: #6fd6d2;
     --marker: rgba(255, 205, 60, 0.4);
     --sun: #1f3d39;
+    color-scheme: dark;
   }
 }
 
@@ -257,6 +276,50 @@ ul {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* Light/dark toggle in the intro corner */
+.theme-toggle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--tile);
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.08);
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: inline;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+    display: inline;
+  }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+    display: none;
+  }
 }
 
 /* Small avatar inside the intro, only used on phones */
@@ -1083,6 +1146,15 @@ ul {
 
 /* Toolbox */
 
+.swipe-hint {
+  display: none;
+  margin-left: 6px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent);
+}
+
 .tool-groups {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1200,8 +1272,44 @@ footer p {
   .caption {
     max-width: 30ch;
   }
+  /* Toolbox on phones: a 2 x 2 block of cards per screen that swipes
+     sideways a full screen at a time (dots underneath show the page). */
   .tool-groups {
-    grid-template-columns: 1fr;
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 10px) / 2);
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .tool-groups::-webkit-scrollbar {
+    display: none;
+  }
+  .tool-group {
+    padding: 12px 12px;
+  }
+  /* snap only at the first card of every second column = one full screen */
+  .tool-group:nth-child(4n + 1) {
+    scroll-snap-align: start;
+  }
+  .tool-group h3 {
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  .tool-group h3 span {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+  .tool-group ul {
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+  .tools .swipe-hint {
+    display: inline;
   }
   /* Merge the avatar into the intro so the first two tiles
      don't look like twins; the avatar tile becomes a compact hobbies strip. */
