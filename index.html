@@ -1,75 +1,442 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Arihant's Profile</title>
-     <meta name="description"
-    content=" I am arihant hirawat. I'm a Web Developer. This is my Portfolio Website.">
-  <meta name="keywords"
-    content="arihant hirawat, Portfolio Website, arihant hirawat Github, arihant hirawat's Portfolio,arihant, arihant-2310 ,arihant jain, arihant2310,Web App Developer">
+    <title>Arihant Hirawat</title>
+    <meta name="description"
+      content="Arihant Hirawat — senior software engineer at Infraspec, a problem solver working across backend, infra and everything in between.">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#11999e">
+
+    <!-- Link previews (LinkedIn, Slack, WhatsApp, X) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arihant-2310.github.io/my-profile/">
+    <meta property="og:title" content="Arihant Hirawat">
+    <meta property="og:description" content="A problem solver working across backend, infra and everything in between.">
+    <meta property="og:image" content="https://arihant-2310.github.io/my-profile/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="icon" href="aj-favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-  <div class="top-container">
-    <img class="top-cloud" src="images/cloud.png" alt="clouds">
-    <h1>I'm Arihant</h1>
-    <h2>a <span class="pro">pro</span>grammer</h2>
-    <img class="bottom-cloud" src="images/cloud.png" alt="cloud">
-    <img src="images/mountain.png" alt="mountains">
-  </div>
-  <div class="middle-container">
-    <div class="profile">
-      <img src="images/user-avatar.jpg" alt="Arihant's avatar">
-      <h2>Hello.</h2>
-      <p class="intro">I'm a computer engineer on progress. My skills include creating websites and coding. I 💖 Cricket.</p>
-    </div>
-    <hr>
-    <div class="skills">
-      <h2>My Skills.</h2>
+    <main class="bento">
 
-      <div class="skill-row">
-        <img class="web-img" src="images/web.png" alt="Web development icon">
-        <h3>Web Development</h3>
-        <p>I'm a full stack web developer & i Love to make good websites.I use nestjs and react for my development. </p>
-      </div>
-      <div class="skill-row">
-        <img class="prog-img" src="images/coding.png" alt="Programming icon">
-        <h3>Programming</h3>
-        <p>
-           Programming for fun. Started to program in C & C++. C language in my 💖 . But confused with pointers 🤣. Python is new attraction due to its simplicity.
-        </p>
-      </div>
-        <div class="skill-row">
-        <img class="web-img" src="images/ai.png" alt="Artificial intelligence icon">
-        <h3>Artificial Intelligence</h3>
-        <p>I got interest in this amazing technology. I started to learn this so i can make use of it to develop something cool and awesome.</p>
-      </div>
+      <section class="tile intro">
+        <p class="hi">Hi there <span class="wave" aria-hidden="true">👋</span> I'm</p>
+        <h1>Arihant</h1>
+        <p class="lead">a <span class="pro">pro</span>blem solver working across backend, infra and everything in between.</p>
+        <p class="pill"><span aria-hidden="true">🧑‍💻</span>Senior Software Engineer @ Infraspec</p>
+      </section>
 
-    </div>
-    <hr>
-    <div class="contact-me">
-      <h2>Get In Touch</h2>
-      <h3>If you are working on similar projects</h3>
-      <p class="contact-message">We will have great time developing websites and dealing with bugs together. </p>
-      <a class="btn" href="mailto:arihant2310@gmail.com">CONTACT ME</a>
-    </div>
-  </div>
+      <section class="tile avatar">
+        <img src="images/avatar.webp" alt="Illustrated avatar of Arihant" width="110" height="110">
+        <p class="hobbies" aria-hidden="true">🏃 🏊 🥾 🏏 🏸</p>
+        <p class="caption"><strong>Off the keyboard:</strong> running, swimming, small treks, cricket with friends, pickleball, badminton, or wandering the streets of Bangalore.</p>
+      </section>
 
+      <section class="tile now">
+        <p class="label">Since 2021</p>
+        <p class="big">Building for clients worldwide at <strong>Infraspec</strong></p>
+      </section>
 
-  <div class="bottom-container">
-    <a class="footer-link" href="https://www.linkedin.com/"><i class="fa fa-linkedin" style="font-size:36px"></i>LinkedIn</a>
-    <a class="footer-link" href="https://twitter.com/"><i class="fa fa-twitter" style="font-size:36px"></i>Twitter</a>
-    <a class="footer-link" href="https://www.github.com/arihant-2310"><i class="fa fa-github" style="font-size:36px"></i>Github</a>
-    <p class="copyright">
-      © <span id="year"></span> arihant_jain.
-    </p>
-  </div>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+      <section class="tile stat s1"><p class="num">5+</p><p>years building</p></section>
+      <section class="tile stat s2"><p class="num">6</p><p>clients across gaming, fintech, logistics, ed-tech &amp; observability</p></section>
+      <section class="tile stat s3"><p class="num">4+</p><p>talks, incl. DevOpsDays India '22 &amp; RubyConf India '23</p></section>
+      <section class="tile stat s4"><p class="num">Lead</p><p>freshers hiring, internships &amp; bootcamps</p></section>
+
+      <section class="tile do">
+        <h2 class="label">What I do</h2>
+        <ul>
+          <li><span aria-hidden="true">🛠️</span><div><strong>Infra &amp; DevOps</strong>AWS, Terraform, Kubernetes, CI/CD</div></li>
+          <li><span aria-hidden="true">⚙️</span><div><strong>Backend &amp; Distributed Systems</strong>Java, C#, Ruby, Python, Node</div></li>
+          <li><span aria-hidden="true">🧠</span><div><strong>Data &amp; ML</strong>Models in prod, Spark, Databricks</div></li>
+          <li><span aria-hidden="true">🔭</span><div><strong>Observability</strong>OpenTelemetry pipelines, dashboards &amp; alerts</div></li>
+        </ul>
+      </section>
+
+      <section class="tile places">
+        <h2 class="label">Teams I've helped</h2>
+        <div class="client-list" id="client-list">
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">🔭</span>
+              <span class="client-text"><strong>Observability platform</strong><span>OpenTelemetry pipelines for logs, metrics &amp; traces</span></span>
+              <span class="client-when">2026 – now</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>OpenTelemetry</li><li>ClickHouse</li><li>SigNoz</li></ul>
+            <ul class="client-points">
+              <li>Building OpenTelemetry collector pipelines that bring logs, metrics and traces together.</li>
+              <li>Turning that telemetry into dashboards and alerts teams actually use.</li>
+              <li>Working with ClickHouse, Grafana, Datadog and SigNoz.</li>
+            </ul>
+          </details>
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">🎲</span>
+              <span class="client-text"><strong>Global gaming company, UK</strong><span>Java 7 → 17 migration, first move from on-prem to AWS EKS, event-driven lobby services</span></span>
+              <span class="client-when">2025 – 2026</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>Java 7 → 17</li><li>AWS EKS</li><li>Kafka</li><li>GraphQL</li></ul>
+            <ul class="client-points">
+              <li>Upgraded 12+ core services from end-of-life Java 7 to Java 17, and turned the upgrade into an AI-assisted recipe that sped up the rest.</li>
+              <li>Led the team's first move from on-prem to AWS EKS, with automated stress testing and Terraform-managed monitoring and alerts.</li>
+              <li>Built the game-lobby backend: a GraphQL API for game data, event-driven services on Kafka and ActiveMQ, and a CMS-to-MongoDB sync with daily reconciliation.</li>
+              <li>Lifted test coverage from under 10% to 75–85% and wrote down a production release process that only lived in people's heads.</li>
+              <li>Spoke at the org-wide architecture forum on configuration management with AWS AppConfig.</li>
+            </ul>
+          </details>
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">📈</span>
+              <span class="client-text"><strong>Stock broking platform, India</strong><span>First ML models in production, ~100 TB data migration</span></span>
+              <span class="client-when">2024 – 2025</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>First ML models</li><li>~100 TB</li><li>Databricks</li></ul>
+            <ul class="client-points">
+              <li>Took the company's first two ML models to production end to end: set up the infrastructure, built the services to package and deploy them, and added logging and alerts to watch them in production.</li>
+              <li>Built a reusable service template for ML APIs that cut new-service setup from weeks to days.</li>
+              <li>Migrated and cleaned ~100 TB of data from Hive to Unity Catalog, and tuned Spark pipelines from hours to minutes.</li>
+              <li>Rolled out Databricks SSO with zero downtime, set org-wide usage standards, and designed a DynamoDB archival setup.</li>
+            </ul>
+          </details>
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">📦</span>
+              <span class="client-text"><strong>Shipping platform, Australia</strong><span>Courier integrations and QR labels on millions of orders</span></span>
+              <span class="client-when">2023</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>Millions of orders</li><li>Couriers</li><li>Datadog</li></ul>
+            <ul class="client-points">
+              <li>Integrated two new couriers into the multi-carrier platform, opening up new order volume.</li>
+              <li>Shipped QR-coded shipping labels that now run on millions of orders.</li>
+              <li>Added tracing, structured logs and alerts as code.</li>
+              <li>Shared on-call for delivery and performance issues in production.</li>
+            </ul>
+          </details>
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">🎓</span>
+              <span class="client-text"><strong>Ed-tech startup, US</strong><span>Two CI/CD systems merged into one GitHub Actions pipeline</span></span>
+              <span class="client-when">2022</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>GitHub Actions</li><li>AWS ECS</li><li>Rails</li></ul>
+            <ul class="client-points">
+              <li>Replaced a TeamCity and Semaphore CI setup with a single GitHub Actions pipeline that tests, builds and deploys a Rails app to AWS ECS across environments.</li>
+              <li>Added asset caching to cut image build times and CI costs.</li>
+            </ul>
+          </details>
+          <details class="client">
+            <summary>
+              <span class="client-icon" aria-hidden="true">📚</span>
+              <span class="client-text"><strong>Ed-tech unicorn, India</strong><span>Microservices and real-time tools for live classes</span></span>
+              <span class="client-when">2021 – 2022</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <ul class="highlights"><li>Spring Boot</li><li>Go</li><li>~80% coverage</li></ul>
+            <ul class="client-points">
+              <li>Built a section-rebalancing tool, backed by Spring Boot and Go services, that evened out teacher–student ratios and saved teaching hours.</li>
+              <li>Built a real-time monitoring system for live sessions that saved the operations team hours of manual checks.</li>
+              <li>Set up unit testing from scratch (~80% coverage), GitLab CI, and Docker for a microservice.</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <section class="tile projects">
+        <h2 class="label">Side projects &amp; open source</h2>
+        <ul class="project-grid" id="project-grid">
+          <li class="project featured">
+            <span class="badge"><span aria-hidden="true">🏢</span>Used company-wide</span>
+            <span class="project-icon" aria-hidden="true">💸</span>
+            <h3>Expense manager</h3>
+            <p>Infraspec's internal app for reimbursing office expenses, in daily use for years. A simple CRUD app on fully automated, immutable infrastructure: baked images, in-memory DB, automated backups, DNS and SSL.</p>
+            <ul class="tags"><li>Rails</li><li>SSO</li><li>Packer</li><li>Terraform</li><li>GitHub Actions</li><li>EC2</li><li>Route 53</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">🛡️</span>
+            <h3>Pi-hole</h3>
+            <p>Network-wide ad and tracker blocking for every device at home, running on a spare laptop.</p>
+            <ul class="tags"><li>Pi-hole v6</li><li>DNS</li><li>Ubuntu</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">💾</span>
+            <h3>Home NAS</h3>
+            <p>~1.4 TB across two drives on the same laptop, shared over the network with a web file browser on top.</p>
+            <ul class="tags"><li>Samba</li><li>FileBrowser</li><li>Docker</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">⚡</span>
+            <h3>Power monitor</h3>
+            <p>A custom sensor script tracks CPU, platform and wall power, battery charge and screen state, graphed live in Grafana.</p>
+            <ul class="tags"><li>Prometheus</li><li>node-exporter</li><li>Grafana</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">🔐</span>
+            <h3>Company infra</h3>
+            <p>Self-hosted CI runners with keyless AWS access, team VPNs, and a self-hosted ERP.</p>
+            <ul class="tags"><li>OIDC</li><li>WireGuard</li><li>Pritunl</li><li>ERPNext</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">🏫</span>
+            <h3>Student portal</h3>
+            <p>College final-year project: payments, courses, exams, leave and digital gate passes.</p>
+            <ul class="tags"><li>React</li><li>Node.js</li><li>MongoDB</li><li>GCP</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">🍔</span>
+            <h3>Food delivery app</h3>
+            <p>Mobile ordering for customers, with order and sales management for restaurants.</p>
+            <ul class="tags"><li>React Native</li><li>NestJS</li></ul>
+          </li>
+          <li class="project">
+            <span class="project-icon" aria-hidden="true">👾</span>
+            <h3>Browser arcade games</h3>
+            <p>A Pac-Man-style maze game and a Fruit Ninja-style fruit-slicing game, both drawn from scratch on a web page.</p>
+            <ul class="tags"><li>JavaScript</li><li>Canvas</li></ul>
+          </li>
+        </ul>
+        <button class="more" type="button" aria-expanded="false" hidden>
+          <span class="more-text">Show all side projects</span>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="oss-strip">
+          <span class="oss-label">🌱 Open source</span>
+          <ul>
+            <li>CoronaSafe Network</li><li>Kites Foundation</li><li>BentoML template</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tile blog">
+        <h2 class="label">Writing &amp; talks</h2>
+        <ul class="post-grid">
+          <li>
+            <a class="post talk" href="https://www.youtube.com/watch?v=3luipQCNKXw&amp;list=PLbgP71NCXCqHAfztq9uRBd26KJ5V5N8v6&amp;index=8">
+              <span class="post-meta"><span aria-hidden="true">🎤</span> Talk · DevOpsDays India 2022</span>
+              <span class="post-title">Container Networking Deep Dive</span>
+              <span class="post-desc">What really happens between a container and its host, explained live.</span>
+              <span class="post-cta"><span class="play" aria-hidden="true">▶</span> Watch on YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a class="post talk" href="https://www.youtube.com/watch?v=5sM7UHwKxAA">
+              <span class="post-meta"><span aria-hidden="true">🎤</span> Talk · RubyConf India 2023</span>
+              <span class="post-title">Diving into Dynamic: Demystifying Metaprogramming with Ruby</span>
+              <span class="post-desc">How Ruby writes code at runtime, and when you should let it.</span>
+              <span class="post-cta"><span class="play" aria-hidden="true">▶</span> Watch on YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a class="post" href="https://www.infraspec.dev/blog/scaling-otel-collectors-push-and-pull">
+              <span class="post-meta"><span aria-hidden="true">🔭</span> Observability · Oct 2026</span>
+              <span class="post-title">Scaling OTel Collectors When Push and Pull Don't Scale the Same Way</span>
+              <span class="post-desc">Lessons from a production incident on scaling collector pipelines.</span>
+              <span class="post-cta">Read on the Infraspec blog <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="post" href="https://www.infraspec.dev/blog/hive-to-unity-catalog-data-migration-databricks">
+              <span class="post-meta"><span aria-hidden="true">🧠</span> Data · Nov 2024</span>
+              <span class="post-title">Efficient Data Migration: Hive Metastore to Unity Catalog</span>
+              <span class="post-desc">Moving data at scale in a regulated enterprise environment.</span>
+              <span class="post-cta">Read on the Infraspec blog <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="post" href="https://www.infraspec.dev/blog/office-home-lab-internet-failover-setup">
+              <span class="post-meta"><span aria-hidden="true">🌐</span> Networking · Dec 2022</span>
+              <span class="post-title">Office/Home Lab Internet Failover Setup</span>
+              <span class="post-desc">Keeping an office or home lab online when one connection drops.</span>
+              <span class="post-cta">Read on the Infraspec blog <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="post" href="https://www.infraspec.dev/blog/container-networking-deep-dive-p1">
+              <span class="post-meta"><span aria-hidden="true">🐳</span> Containers · Nov 2022</span>
+              <span class="post-title">Container Networking Deep Dive, Part 1</span>
+              <span class="post-desc">How a container talks to its host, and back again.</span>
+              <span class="post-cta">Read on the Infraspec blog <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tile tools">
+        <h2 class="label">Toolbox</h2>
+        <div class="tool-groups">
+          <div class="tool-group">
+            <h3><span aria-hidden="true">🗣️</span> Languages</h3>
+            <ul><li>Java</li><li>C#</li><li>Python</li><li>Ruby</li><li>JavaScript</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">⚙️</span> Backend</h3>
+            <ul><li>Spring Boot</li><li>Rails</li><li>NestJS</li><li>Node.js</li><li>FastAPI</li><li>Django</li><li>.NET</li><li>GraphQL</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">📨</span> Messaging</h3>
+            <ul><li>Kafka</li><li>ActiveMQ</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">🗄️</span> Databases</h3>
+            <ul><li>PostgreSQL</li><li>MongoDB</li><li>Oracle</li><li>DynamoDB</li><li>ClickHouse</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">☁️</span> Cloud &amp; infra</h3>
+            <ul><li>AWS</li><li>Terraform</li><li>Kubernetes</li><li>Docker</li><li>Packer</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">🚀</span> CI/CD</h3>
+            <ul><li>GitHub Actions</li><li>GitLab CI</li><li>TeamCity</li><li>Semaphore</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">🧠</span> Data &amp; ML</h3>
+            <ul><li>Databricks</li><li>Spark</li><li>BentoML</li><li>AWS Bedrock</li></ul>
+          </div>
+          <div class="tool-group">
+            <h3><span aria-hidden="true">🔭</span> Observability</h3>
+            <ul><li>OpenTelemetry</li><li>Grafana</li><li>Prometheus</li><li>Datadog</li><li>SigNoz</li><li>CloudWatch</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile contact">
+        <div class="contact-text">
+          <span class="label">Got an idea?</span>
+          <h2 class="big">Let's talk.</h2>
+        </div>
+        <div class="contact-actions">
+          <div class="email-pill">
+            <a href="mailto:arihant2310@gmail.com"><span aria-hidden="true">✉️</span> arihant2310@gmail.com</a>
+            <button class="copy" type="button" data-email="arihant2310@gmail.com" aria-label="Copy email address">
+              <span class="copy-label" aria-live="polite">Copy</span>
+            </button>
+          </div>
+          <a class="action" href="https://www.github.com/arihant-2310">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="action" href="https://www.linkedin.com/in/arihant2310/">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Arihant Hirawat</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Teams I've helped: on wide screens, turn the accordion into a
+      // list-and-details view built from the same markup.
+      const clientList = document.getElementById("client-list");
+      const clients = [...clientList.querySelectorAll(".client")];
+      const tabs = document.createElement("div");
+      tabs.className = "client-tabs";
+      tabs.innerHTML = '<div class="client-nav" role="tablist" aria-orientation="vertical"></div><div class="client-panels"></div>';
+      const nav = tabs.firstElementChild;
+      const panels = tabs.lastElementChild;
+      const DEFAULT_CLIENT = 1;
+
+      clients.forEach((client, i) => {
+        const icon = client.querySelector(".client-icon").textContent;
+        const name = client.querySelector(".client-text strong").textContent;
+        const line = client.querySelector(".client-text span").textContent;
+        const when = client.querySelector(".client-when").textContent;
+
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.className = "client-tab";
+        tab.id = `client-tab-${i}`;
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-controls", `client-panel-${i}`);
+        tab.innerHTML = `<span class="client-icon" aria-hidden="true">${icon}</span><span class="client-tab-text"><strong></strong><span class="client-when"></span></span>`;
+        tab.querySelector("strong").textContent = name;
+        tab.querySelector(".client-when").textContent = when;
+        nav.appendChild(tab);
+
+        const panel = document.createElement("div");
+        panel.className = "client-panel";
+        panel.id = `client-panel-${i}`;
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", tab.id);
+        panel.innerHTML = `<p class="client-panel-when"></p><h3></h3><p class="client-panel-line"></p>`;
+        panel.querySelector(".client-panel-when").textContent = when;
+        panel.querySelector("h3").textContent = `${icon} ${name}`;
+        panel.querySelector(".client-panel-line").textContent = line;
+        panel.appendChild(client.querySelector(".highlights").cloneNode(true));
+        panel.appendChild(client.querySelector(".client-points").cloneNode(true));
+        panels.appendChild(panel);
+      });
+
+      const tabButtons = [...nav.children];
+      const select = (index, focus = false) => {
+        tabButtons.forEach((tab, i) => {
+          const active = i === index;
+          tab.setAttribute("aria-selected", String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panels.children[i].classList.toggle("active", active);
+        });
+        if (focus) tabButtons[index].focus();
+      };
+      tabButtons.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(i));
+        tab.addEventListener("keydown", (e) => {
+          const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+          if (e.key === "Home") { e.preventDefault(); select(0, true); }
+          else if (e.key === "End") { e.preventDefault(); select(tabButtons.length - 1, true); }
+          else if (step) {
+            e.preventDefault();
+            select((i + step + tabButtons.length) % tabButtons.length, true);
+          }
+        });
+      });
+      select(DEFAULT_CLIENT);
+      clientList.after(tabs);
+      clientList.closest(".places").classList.add("has-tabs");
+
+      // Side projects: show the first row, reveal the rest on demand.
+      // Without JavaScript every card simply stays visible.
+      const projects = document.querySelector(".projects");
+      const moreBtn = projects.querySelector(".more");
+      const moreText = moreBtn.querySelector(".more-text");
+      const hiddenCount = projects.querySelectorAll(".project").length - 2;
+      projects.classList.add("collapsed");
+      moreBtn.hidden = false;
+      moreBtn.setAttribute("aria-controls", "project-grid");
+      moreText.textContent = `Show ${hiddenCount} more side projects`;
+      moreBtn.addEventListener("click", () => {
+        const open = projects.classList.toggle("collapsed") === false;
+        moreBtn.setAttribute("aria-expanded", String(open));
+        moreText.textContent = open ? "Show fewer" : `Show ${hiddenCount} more side projects`;
+      });
+
+      const copyBtn = document.querySelector(".copy");
+      const copyLabel = copyBtn.querySelector(".copy-label");
+      copyBtn.addEventListener("click", async () => {
+        const email = copyBtn.dataset.email;
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          const field = document.createElement("textarea");
+          field.value = email;
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+        }
+        copyLabel.textContent = "Copied!";
+        setTimeout(() => (copyLabel.textContent = "Copy"), 2000);
+      });
+    </script>
   </body>
 </html>
