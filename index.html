@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arihant's Profile</title>
      <meta name="description"
     content=" I am arihant hirawat. I'm a Web Developer. This is my Portfolio Website.">
@@ -14,7 +15,7 @@
   </head>
   <body>
   <div class="top-container">
-    <img class="top-cloud"src="images/cloud.png" alt="clouds">
+    <img class="top-cloud" src="images/cloud.png" alt="clouds">
     <h1>I'm Arihant</h1>
     <h2>a <span class="pro">pro</span>grammer</h2>
     <img class="bottom-cloud" src="images/cloud.png" alt="cloud">
@@ -22,7 +23,7 @@
   </div>
   <div class="middle-container">
     <div class="profile">
-      <img src="images/user-avatar.jpg" alt="">
+      <img src="images/user-avatar.jpg" alt="Arihant's avatar">
       <h2>Hello.</h2>
       <p class="intro">I'm a computer engineer on progress. My skills include creating websites and coding. I 💖 Cricket.</p>
     </div>
@@ -31,20 +32,19 @@
       <h2>My Skills.</h2>
 
       <div class="skill-row">
-        <img class="web-img" src="images/web.png" alt="">
+        <img class="web-img" src="images/web.png" alt="Web development icon">
         <h3>Web Development</h3>
         <p>I'm a full stack web developer & i Love to make good websites.I use nestjs and react for my development. </p>
       </div>
       <div class="skill-row">
-        <img class="prog-img" src="images/coding.png" alt="">
+        <img class="prog-img" src="images/coding.png" alt="Programming icon">
         <h3>Programming</h3>
         <p>
            Programming for fun. Started to program in C & C++. C language in my 💖 . But confused with pointers 🤣. Python is new attraction due to its simplicity.
         </p>
-        </p>
       </div>
         <div class="skill-row">
-        <img class="web-img" src="images/ai.png" alt="">
+        <img class="web-img" src="images/ai.png" alt="Artificial intelligence icon">
         <h3>Artificial Intelligence</h3>
         <p>I got interest in this amazing technology. I started to learn this so i can make use of it to develop something cool and awesome.</p>
       </div>
@@ -65,12 +65,11 @@
     <a class="footer-link" href="https://twitter.com/"><i class="fa fa-twitter" style="font-size:36px"></i>Twitter</a>
     <a class="footer-link" href="https://www.github.com/arihant-2310"><i class="fa fa-github" style="font-size:36px"></i>Github</a>
     <p class="copyright">
-      © <script type="text/JavaScript">
-          document.write(new Date().getFullYear());
-        </script> arihant_jain.
+      © <span id="year"></span> arihant_jain.
     </p>
   </div>
-
-  </div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
   </body>
 </html>
